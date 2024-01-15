@@ -11,6 +11,6 @@ namespace Dominio
         public int Id { get; set; }
         public string NomeGrupo { get; set; }
         public List<Midia>? HistoricoDeMidia { get; set; }
-        public List<Usuario> Membros { get; set; }
+        public List<UsuarioGrupo> Membros { get; set; }
     }
 }
