@@ -1,0 +1,33 @@
+# Compiled Object files
+*.o
+**/.vs/
+**/bin/
+**/obj/
+ 
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+ 
+# Compiled Static libraries
+*.a
+*.lib
+ 
+# Executables
+*.exe
+ 
+# DUB
+.dub
+docs.json
+__dummy.html
+docs/
+ 
+# Code coverage
+*.lst
+ 
+# 1C external data processors on unmanaged formes
+ 
+**/Form/**/form
+src/**/und/*
+src/**/maps.txt
+src/**/renames.txt
