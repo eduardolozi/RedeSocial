@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace Dominio.Modelos
 {
     public class Midia
     {
         public int Id { get; set; }
         public byte[] Conteudo { get; set; }
         public string Extensao { get; set; }
-        public TimeOnly? Duracao { get; set; }
+        public TimeSpan? Duracao { get; set; }
         public int GrupoId { get; set; }
         public Grupo Grupo { get; set; }
         public int PostagemId { get; set; }
