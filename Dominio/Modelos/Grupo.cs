@@ -8,7 +8,7 @@ namespace Dominio.Modelos
 {
     public class Grupo
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string NomeGrupo { get; set; }
         public List<Midia>? HistoricoDeMidia { get; set; }
         public List<Usuario> Membros { get; set; }

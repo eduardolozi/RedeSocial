@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracaoInicial : Migration
+    public partial class MigracaoInicialGuid : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,8 +15,7 @@ namespace Infra.Migrations
                 name: "Grupos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NomeGrupo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -28,8 +27,7 @@ namespace Infra.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -45,8 +43,8 @@ namespace Infra.Migrations
                 name: "GrupoUsuario",
                 columns: table => new
                 {
-                    GruposId = table.Column<int>(type: "int", nullable: false),
-                    MembrosId = table.Column<int>(type: "int", nullable: false)
+                    GruposId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MembrosId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,11 +67,10 @@ namespace Infra.Migrations
                 name: "Postagens",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DataPublicacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,8 +87,8 @@ namespace Infra.Migrations
                 name: "UsuarioUsuario",
                 columns: table => new
                 {
-                    SeguidoresId = table.Column<int>(type: "int", nullable: false),
-                    SeguindoId = table.Column<int>(type: "int", nullable: false)
+                    SeguidoresId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SeguindoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,13 +110,12 @@ namespace Infra.Migrations
                 name: "Midias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Conteudo = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Extensao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Duracao = table.Column<TimeSpan>(type: "time", nullable: true),
-                    GrupoId = table.Column<int>(type: "int", nullable: false),
-                    PostagemId = table.Column<int>(type: "int", nullable: false)
+                    GrupoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PostagemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

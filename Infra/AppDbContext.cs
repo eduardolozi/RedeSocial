@@ -14,6 +14,39 @@ namespace Infra
 
         public AppDbContext() { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Id)
+                .ValueGeneratedNever();
+
+            modelBuilder.Entity<Midia>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<Midia>()
+                .Property(u => u.Id)
+                .ValueGeneratedNever();
+
+            modelBuilder.Entity<Postagem>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<Postagem>()
+                .Property(u => u.Id)
+                .ValueGeneratedNever();
+
+            modelBuilder.Entity<Grupo>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<Grupo>()
+                .Property(u => u.Id)
+                .ValueGeneratedNever();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(StringDeConexao);

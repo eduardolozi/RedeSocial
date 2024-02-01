@@ -8,13 +8,13 @@ namespace Dominio.Modelos
 {
     public class Midia
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public byte[] Conteudo { get; set; }
         public string Extensao { get; set; }
         public TimeSpan? Duracao { get; set; }
-        public int GrupoId { get; set; }
+        public Guid GrupoId { get; set; }
         public Grupo Grupo { get; set; }
-        public int PostagemId { get; set; }
+        public Guid PostagemId { get; set; }
         public Postagem Postagem { get; set; }
     }
 }

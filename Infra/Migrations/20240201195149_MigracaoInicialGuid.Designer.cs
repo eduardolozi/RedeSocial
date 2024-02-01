@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240124001154_MigracaoInicial")]
-    partial class MigracaoInicial
+    [Migration("20240201195149_MigracaoInicialGuid")]
+    partial class MigracaoInicialGuid
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,8 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Dominio.Modelos.Grupo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NomeGrupo")
                         .IsRequired()
@@ -44,11 +41,8 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Dominio.Modelos.Midia", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<byte[]>("Conteudo")
                         .IsRequired()
@@ -61,11 +55,11 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GrupoId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GrupoId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PostagemId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PostagemId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -78,11 +72,8 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Dominio.Modelos.Postagem", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataPublicacao")
                         .HasColumnType("datetime2");
@@ -90,8 +81,8 @@ namespace Infra.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -102,11 +93,8 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Dominio.Modelos.Usuario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("datetime2");
@@ -133,11 +121,11 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("GrupoUsuario", b =>
                 {
-                    b.Property<int>("GruposId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GruposId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("MembrosId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("MembrosId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("GruposId", "MembrosId");
 
@@ -148,11 +136,11 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("UsuarioUsuario", b =>
                 {
-                    b.Property<int>("SeguidoresId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SeguidoresId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("SeguindoId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SeguindoId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("SeguidoresId", "SeguindoId");
 
