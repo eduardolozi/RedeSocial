@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Validacoes
 {
-    internal class MidiaValidator
+    public class MidiaValidator
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra
+namespace Infra.SQLServer
 {
     public class AppDbContext : DbContext
     {
@@ -52,10 +52,10 @@ namespace Infra
             optionsBuilder.UseSqlServer(StringDeConexao);
         }
 
-        public DbSet<Usuario> Usuarios {  get; set; }
-        public DbSet<Midia> Midias {  get; set; }
-        public DbSet<Grupo> Grupos {  get; set; }
-        public DbSet<Postagem> Postagens {  get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Midia> Midias { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
+        public DbSet<Postagem> Postagens { get; set; }
 
     }
 }
