@@ -9,8 +9,7 @@ namespace Dominio.IRepositorios
 {
     public interface IUsuarioRepositorio : IRepositorio<Usuario>
     {
-        public IEnumerable<Usuario> ObterTodos();
-        public Usuario ObterPeloNome(string nome);
+        public IEnumerable<Usuario> ObterTodos(string? filtro);
         public Usuario ObterPorId(string id);
         public void Criar(Usuario usuario);
         public void Atualizar(Usuario usuario);

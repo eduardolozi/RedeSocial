@@ -9,5 +9,9 @@ namespace Infra.Raven.Repositorios
 {
     public class GrupoRepositorioRaven : IGrupoRepositorio
     {
+        public void AdicionarUsuario()
+        {
+
+        }
     }
 }

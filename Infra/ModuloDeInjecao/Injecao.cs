@@ -4,6 +4,7 @@ using Infra.SQLServer.Repositorios;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Raven.Client.Documents;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Infra.ModuloDeInjecao
 {
@@ -13,11 +14,14 @@ namespace Infra.ModuloDeInjecao
         {
             servicesCollection.TryAddSingleton<IDocumentStore>(ctx =>
             {
+                var certificatePath = $@"C:\free.eduardoellozi.client.certificate.pfx";
+
                 var store = new DocumentStore
                 {
-                    Urls = new string[] { "http://127.0.0.1:8080/" },
-                    Database = "Shop"
-                };
+                    Urls = new string[] { "https://a.free.eduardoellozi.ravendb.cloud" },
+                    Database = "RedeSocial",
+                    Certificate = new X509Certificate2(certificatePath, "")
+                }; 
 
                 store.Initialize();
 

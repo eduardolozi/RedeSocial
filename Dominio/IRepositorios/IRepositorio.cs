@@ -9,7 +9,7 @@ namespace Dominio.IRepositorios
 {
     public interface IRepositorio<T> where T : class
     {
-        public IEnumerable<T> ObterTodos();
+        public IEnumerable<T> ObterTodos(string filtro);
         public T ObterPorId(string id);
         public void Criar(T entidade);
         public void Atualizar(T entidade);

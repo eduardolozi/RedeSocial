@@ -9,5 +9,9 @@ namespace Infra.SQLServer.Repositorios
 {
     public class GrupoRepositorioSQL : IGrupoRepositorio
     {
+        public void AdicionarUsuario()
+        {
+
+        }
     }
 }

@@ -17,15 +17,10 @@ namespace Infra.Raven.Repositorios
         {
             _store = store;
         }
-        public IEnumerable<Usuario> ObterTodos()
+        public IEnumerable<Usuario> ObterTodos(string? filtro)
         {
             using IDocumentSession session = _store.OpenSession();
-            return session.Query<Usuario>().ToList();
-        }
-        public Usuario ObterPeloNome(string nome)
-        {
-            using IDocumentSession session = _store.OpenSession();
-            return null;
+            return (filtro != null) ? session.Query<Usuario>().Where(x => x.UserName == filtro).ToList() : session.Query<Usuario>().ToList();
         }
         public Usuario ObterPorId(string id)
         {
@@ -35,13 +30,14 @@ namespace Infra.Raven.Repositorios
         public void Criar(Usuario usuario)
         {
             using IDocumentSession session = _store.OpenSession();
+            usuario.Id = Guid.NewGuid().ToString();
             session.Store(usuario);
             session.SaveChanges();
         }
         public void Atualizar(Usuario usuario)
         {
             using IDocumentSession session = _store.OpenSession();
-            var usuarioNoBanco = session.Load<Usuario>(Convert.ToString(usuario.Id));
+            var usuarioNoBanco = session.Load<Usuario>(usuario.Id);
             if(usuarioNoBanco != null)
             {
                 usuarioNoBanco.UserName = usuario.UserName;
