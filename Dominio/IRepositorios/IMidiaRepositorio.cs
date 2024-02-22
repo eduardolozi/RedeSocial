@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Dominio.Modelos;
 namespace Dominio.IRepositorios
 {
-    public interface IMidiaRepositorio
+    public interface IMidiaRepositorio : IRepositorio<Midia>
     {
+        public IEnumerable<Midia> ObterTodos(string? filtro);
+        public Midia ObterPorId(string id);
+        public void Criar(Midia midia);
+        public void Atualizar(Midia midia);
+        public void Remover(string id);
     }
 }

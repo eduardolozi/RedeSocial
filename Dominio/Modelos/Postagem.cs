@@ -8,7 +8,7 @@ namespace Dominio.Modelos
 {
     public class Postagem
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string? Descricao { get; set; }
         public DateTime DataPublicacao { get; set; }
         public List<Midia> Conteudo { get; set; }
