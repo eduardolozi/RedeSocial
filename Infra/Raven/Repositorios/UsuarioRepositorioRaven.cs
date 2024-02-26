@@ -2,11 +2,6 @@
 using Dominio.Modelos;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infra.Raven.Repositorios
 {
@@ -26,6 +21,17 @@ namespace Infra.Raven.Repositorios
         {
             using IDocumentSession session = _store.OpenSession();
             return session.Load<Usuario>(id);
+        }
+        public IEnumerable<Usuario> ObterTodosOsSeguidores(string id)
+        {
+            var usuario = ObterPorId(id);
+            return usuario.Seguidores.ToList();
+            
+        }
+        public IEnumerable<Usuario> ObterTodosOsSeguindo(string id)
+        {
+            var usuario = ObterPorId(id);
+            return usuario.Seguindo.ToList();
         }
         public void Criar(Usuario usuario)
         {

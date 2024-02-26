@@ -30,6 +30,32 @@ namespace Application.Controllers
             }
         }
 
+        [HttpGet("{id}/seguindo")]
+        public ActionResult<IEnumerable<Usuario>> ObterSeguindo([FromRoute] string id)
+        {
+            try
+            {
+                var seguindo = _repositorio.ObterTodosOsSeguindo(id);
+                return Ok(seguindo);
+            } catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+        
+        [HttpGet("{id}/seguidores")]
+        public ActionResult<IEnumerable<Usuario>> ObterSeguidores([FromRoute] string id)
+        {
+            try
+            {
+                var seguidores = _repositorio.ObterTodosOsSeguidores(id);
+                return Ok(seguidores);
+            } catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
         [HttpPost]
         public IActionResult Criar([FromBody] Usuario usuario)
         {
