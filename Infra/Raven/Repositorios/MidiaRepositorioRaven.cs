@@ -7,14 +7,24 @@ namespace Infra.Raven.Repositorios
     public class MidiaRepositorioRaven : IMidiaRepositorio
     {
         private readonly IDocumentStore _store;
-        public MidiaRepositorioRaven(IDocumentStore store)
+        private readonly IUsuarioRepositorio _usuarioRepo;
+        public MidiaRepositorioRaven(IDocumentStore store, IUsuarioRepositorio usuarioRepo)
         {
             _store = store;
+            _usuarioRepo = usuarioRepo;
         }
 
         public IEnumerable<Midia> ObterTodos(string? filtro)
         {
             var session = _store.OpenSession();
+
+            if(filtro == null)
+            {
+                //TODO
+            } else
+            {
+                var usuario = _usuarioRepo.ObterPorId(filtro);
+            }
             return null;
         }
         public Midia ObterPorId(string id)

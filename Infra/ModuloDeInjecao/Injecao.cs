@@ -1,6 +1,5 @@
 ﻿using Dominio.IRepositorios;
 using Infra.Raven.Repositorios;
-using Infra.SQLServer.Repositorios;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Raven.Client.Documents;
@@ -41,14 +40,5 @@ namespace Infra.ModuloDeInjecao
             return servicesCollection;
         }
         
-        public static IServiceCollection AddSQLServerRepositories(this IServiceCollection servicesCollection)
-        {
-            servicesCollection.TryAddScoped<IUsuarioRepositorio, UsuarioRepositorioSQL>();
-            servicesCollection.TryAddScoped<IMidiaRepositorio, MidiaRepositorioSQL>();
-            servicesCollection.TryAddScoped<IPostagemRepositorio, PostagemRepositorioSQL>();
-            servicesCollection.TryAddScoped<IGrupoRepositorio, GrupoRepositorioSQL>();
-
-            return servicesCollection;
-        }
     }
 }

@@ -17,10 +17,10 @@ namespace Infra.Raven.Repositorios
         {
             _store = store;
         }
-        public IEnumerable<Usuario> ObterTodos(string? filtro)
+        public IEnumerable<Usuario> ObterTodos(string? userNameFiltro)
         {
             using IDocumentSession session = _store.OpenSession();
-            return (filtro != null) ? session.Query<Usuario>().Where(x => x.UserName == filtro).ToList() : session.Query<Usuario>().ToList();
+            return (userNameFiltro != null) ? session.Query<Usuario>().Search(x => x.UserName, $"*{userNameFiltro}*").ToList() : session.Query<Usuario>().ToList();
         }
         public Usuario ObterPorId(string id)
         {
