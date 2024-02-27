@@ -18,43 +18,27 @@ namespace Infra.Raven.Repositorios
         {
             var session = _store.OpenSession();
 
-            if(filtro == null)
-            {
-                //TODO
-            } else
-            {
-                var usuario = _usuarioRepo.ObterPorId(filtro);
-            }
-            return null;
+            return session.Query<Midia>().ToList();
+
+            //var usuario = _usuarioRepo.ObterPorId(filtro);
+            //if (usuario == null) return null;
+            //return session.Query<Midia>().Where(x => x.Postagem.)
+
         }
         public Midia ObterPorId(string id)
         {
             var session = _store.OpenSession();
-
-            return null;
+            return session.Load<Midia>(id);
         }
         public void Criar(Midia midia)
         {
             var session = _store.OpenSession();
-
-        }
-        public void Atualizar(Midia midia)
-        {
-            var session = _store.OpenSession();
-
+            session.Store(midia);
         }
         public void Remover(string id)
         {
             var session = _store.OpenSession();
-
+            session.Delete(id);
         }
     }
-    //public Guid Id { get; set; }
-    //public byte[] Conteudo { get; set; }
-    //public string Extensao { get; set; }
-    //public TimeSpan? Duracao { get; set; }
-    //public Guid GrupoId { get; set; }
-    //public Grupo Grupo { get; set; }
-    //public Guid PostagemId { get; set; }
-    //public Postagem Postagem { get; set; }
 }

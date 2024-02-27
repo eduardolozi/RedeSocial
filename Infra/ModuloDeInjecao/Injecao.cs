@@ -1,5 +1,6 @@
 ﻿using Dominio.IRepositorios;
 using Infra.Raven.Repositorios;
+using Infra.Servicos;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Raven.Client.Documents;
@@ -39,6 +40,13 @@ namespace Infra.ModuloDeInjecao
 
             return servicesCollection;
         }
+
+        public static IServiceCollection AddJwtToken(this IServiceCollection servicesCollection) 
+        {
+            servicesCollection.TryAddTransient<TokenService>();
+        
+            return servicesCollection;
+        }         
         
     }
 }

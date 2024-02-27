@@ -1,4 +1,6 @@
+using Dominio.Modelos;
 using Infra.ModuloDeInjecao;
+using Infra.Servicos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRavenDB();
+builder.Services.AddJwtToken();
 builder.Services.AddRavenRepositories();
 
 var app = builder.Build();
@@ -21,5 +24,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapPost("/login", (Usuario usuario, TokenService tokenService)
+    => tokenService.GerarToken(usuario));
 
 app.Run();

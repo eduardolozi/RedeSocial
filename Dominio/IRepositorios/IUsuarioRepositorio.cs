@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.IRepositorios
 {
-    public interface IUsuarioRepositorio : IRepositorio<Usuario>
+    public interface IUsuarioRepositorio
     {
         public IEnumerable<Usuario> ObterTodos(string? filtro);
         public Usuario ObterPorId(string id);
