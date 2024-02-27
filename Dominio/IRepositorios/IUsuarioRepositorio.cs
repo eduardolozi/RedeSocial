@@ -11,6 +11,7 @@ namespace Dominio.IRepositorios
     {
         public IEnumerable<Usuario> ObterTodos(string? filtro);
         public Usuario ObterPorId(string id);
+        public Usuario ObterPeloUserNameCompleto(string userName);
         public IEnumerable<Usuario> ObterTodosOsSeguidores(string id);
         public IEnumerable<Usuario> ObterTodosOsSeguindo(string id);
         public void Criar(Usuario usuario);

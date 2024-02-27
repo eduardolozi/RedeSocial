@@ -25,7 +25,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapPost("/login", (Usuario usuario, TokenService tokenService)
-    => tokenService.GerarToken(usuario));
-
 app.Run();

@@ -22,6 +22,11 @@ namespace Infra.Raven.Repositorios
             using IDocumentSession session = _store.OpenSession();
             return session.Load<Usuario>(id);
         }
+        public Usuario ObterPeloUserNameCompleto(string userName)
+        {
+            using IDocumentSession session = _store.OpenSession();
+            return session.Query<Usuario>().Where(x => x.UserName == userName).FirstOrDefault();
+        }
         public IEnumerable<Usuario> ObterTodosOsSeguidores(string id)
         {
             var usuario = ObterPorId(id);
