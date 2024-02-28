@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace Application.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
@@ -19,6 +19,7 @@ namespace Application.Controllers
             _repositorio = repositorio;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<Usuario>> ObterTodos([FromQuery] string? userName)
         {
@@ -32,6 +33,7 @@ namespace Application.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}/seguindo")]
         public ActionResult<IEnumerable<Usuario>> ObterSeguindo([FromRoute] string id)
         {
@@ -44,7 +46,8 @@ namespace Application.Controllers
                 return NotFound();
             }
         }
-        
+
+        [Authorize]
         [HttpGet("{id}/seguidores")]
         public ActionResult<IEnumerable<Usuario>> ObterSeguidores([FromRoute] string id)
         {
@@ -71,6 +74,7 @@ namespace Application.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Remover([FromRoute] string id)
         {
@@ -84,6 +88,7 @@ namespace Application.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromRoute] string id, [FromBody] Usuario usuario)
         {
@@ -98,6 +103,7 @@ namespace Application.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<Usuario> ObterPorId([FromRoute] string id)
         {
