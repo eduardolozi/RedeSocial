@@ -1,10 +1,11 @@
 ﻿using Dominio.IRepositorios;
 using Dominio.Modelos;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MidiaController : ControllerBase

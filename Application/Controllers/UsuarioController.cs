@@ -1,12 +1,14 @@
 ﻿using Dominio.IRepositorios;
 using Dominio.Modelos;
 using Infra.Raven.Repositorios;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
 namespace Application.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
