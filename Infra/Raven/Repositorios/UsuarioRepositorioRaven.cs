@@ -2,6 +2,7 @@
 using Dominio.Modelos;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
+using BC = BCrypt.Net.BCrypt;
 
 namespace Infra.Raven.Repositorios
 {
@@ -42,6 +43,7 @@ namespace Infra.Raven.Repositorios
         {
             using IDocumentSession session = _store.OpenSession();
             usuario.Id = Guid.NewGuid().ToString();
+            usuario.Senha = BC.HashPassword(usuario.Senha);
             session.Store(usuario);
             session.SaveChanges();
         }

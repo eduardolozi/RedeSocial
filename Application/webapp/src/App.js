@@ -7,7 +7,7 @@ const LoginView = ({ onLogin }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("sua-url-api/login", {
+      const response = await fetch("api/Usuario", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,30 +27,36 @@ const LoginView = ({ onLogin }) => {
   };
 
   return (
-    <div class="container-pai">
-      <div className="login-container">
-        <h1>Login</h1>
-        <label className="label-login">Usuário ou email</label>
-        <input
-          className="input-login"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <label className="label-login">Senha</label>
-        <input
-          className="input-login"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button className="botao-login" onClick={handleLogin}>
-          Login
-        </button>
+    <div className="container-pai">
+      <div className="imagem-cadastro">
+        <img src="" alt="imagem do cadastro"></img>
       </div>
+      <div className="container-cadastro"></div>
     </div>
+    // <div class="container-pai">
+    //   <div className="login-container">
+    //     <h1>Login</h1>
+    //     <label className="label-login">Usuário ou email</label>
+    //     <input
+    //       className="input-login"
+    //       type="text"
+    //       value={username}
+    //       onChange={(e) => setUsername(e.target.value)}
+    //     />
+    //     <br />
+    //     <label className="label-login">Senha</label>
+    //     <input
+    //       className="input-login"
+    //       type="password"
+    //       value={password}
+    //       onChange={(e) => setPassword(e.target.value)}
+    //     />
+    //     <br />
+    //     <button className="botao-login" onClick={handleLogin}>
+    //       Login
+    //     </button>
+    //   </div>
+    // </div>
   );
 };
 

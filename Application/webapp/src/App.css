@@ -1,49 +1,10 @@
 .container-pai {
-  height: 90vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
 }
 
-h1 {
-  color: orange;
-}
-
-.login-container {
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgb(31, 30, 30);
+.imagem-cadastro {
   width: 50%;
-}
+  height: 100vh;
 
-.label-login {
-  color: white;
-  font-weight: bold;
-  text-align: left;
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 8px;
-}
-
-.input-login {
-  width: 250px;
-  border-width: 1px solid gray;
-  border-radius: 5px;
-  height: 30px;
-}
-
-.botao-login {
-  width: 15.5%;
-  background-color: orange;
-  border: none;
-  border-radius: 5px;
-  height: 30px;
-  font-weight: bold;
-  margin-bottom: 50px;
-}
-
-.botao-login:hover {
-  cursor: pointer;
 }

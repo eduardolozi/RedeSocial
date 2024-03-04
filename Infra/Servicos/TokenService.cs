@@ -2,13 +2,10 @@
 using Dominio.Modelos;
 using Infra.Dtos;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
+using BC = BCrypt.Net.BCrypt;
 
 namespace Infra.Servicos
 {
@@ -26,7 +23,7 @@ namespace Infra.Servicos
         public string GerarToken(UsuarioDto usuarioDto)
         {
             var usuarioNoBanco = _usuarioRepositorio.ObterPeloUserNameCompleto(usuarioDto.UserName);
-            if (usuarioNoBanco is null || usuarioNoBanco.Senha != usuarioDto.Senha) return String.Empty;
+            if (usuarioNoBanco is null || !(BC.Verify(usuarioDto.Senha, usuarioNoBanco.Senha))) return String.Empty;
 
             var handler = new JwtSecurityTokenHandler();
             var chave = Encoding.ASCII.GetBytes(ChavePrivada);
